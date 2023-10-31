@@ -3,9 +3,9 @@
 #include <string>
 #include <fstream>
 
-#define INFO 0
-#define DEBUG 1
-#define ERROR 2
+#define INFO 1
+#define DEBUG 2
+#define ERROR 0
 
 #define CONSOLE false
 #define LOGFILE true
@@ -25,13 +25,14 @@ class logger
     //default output file path
     static std::string output_file_path;
 
-    // static std::ofstream stream;
+    static char log_level;
 
     //write log to logfile
     static void write_log(std::string message);
 
     public:
-    static void log(std::string message, int message_type = INFO, bool write_file = CONSOLE);
+    static void log(std::string message, char message_type = INFO, bool write_file = CONSOLE);
     static void clear();
     static void change_log_file(std::string new_file_path);
+    static void change_log_level(char new_log_level);
 };
